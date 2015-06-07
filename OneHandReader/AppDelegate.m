@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BKPDFDocument.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    BKPDFDocument* document = [[BKPDFDocument alloc] initWithFileURL:[[NSBundle mainBundle] URLForResource:@"help" withExtension:@"pdf"]];
+    
+    NSLog(@"document pages amount %d",document.pagesAmount);
+    
     return YES;
 }
 
