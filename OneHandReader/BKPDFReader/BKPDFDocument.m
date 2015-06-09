@@ -39,6 +39,11 @@
     return result;
 }
 
+- (CGRect)rectForPage
+{
+    return CGPDFPageGetBoxRect([self pageWithNumber:1], kCGPDFCropBox);
+}
+
 - (void)dealloc
 {
     CGPDFDocumentRelease(_pdfRef);

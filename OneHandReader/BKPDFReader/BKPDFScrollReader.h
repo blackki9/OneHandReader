@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class BKPDFDocument;
+
 @interface BKPDFScrollReader : UIView
+
+- (void)showPdfDocument:(BKPDFDocument*)document;
 
 @end

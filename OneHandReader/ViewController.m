@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "BKPDFReaderView.h"
+#import "BKPDFScrollReader.h"
 #import "BKPDFDocument.h"
+#import <PureLayout.h>
 
 @interface ViewController ()
 
@@ -18,11 +19,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BKPDFReaderView* readerView = [[BKPDFReaderView alloc] initWithFrame:self.view.bounds];
+    BKPDFScrollReader* readerView = [[BKPDFScrollReader alloc] initWithFrame:self.view.bounds];
     
     BKPDFDocument* document = [[BKPDFDocument alloc] initWithFileURL:[[NSBundle mainBundle] URLForResource:@"help" withExtension:@"pdf"]];
 
     [self.view addSubview:readerView];
+    
+    [readerView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0,0)];
+    
     [readerView showPdfDocument:document];
     // Do any additional setup after loading the view, typically from a nib.
 }

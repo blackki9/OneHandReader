@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 black9. All rights reserved.
 //
 
-#import "BKPDFReaderView.h"
+#import "BKPDFPageView.h"
 #import "BKPDFDocument.h"
-@interface BKPDFReaderView ()
+@interface BKPDFPageView ()
 
 @property (nonatomic, strong) BKPDFDocument* pdfDocument;
 @property (nonatomic,assign) NSInteger currentPage;
 @end
 
-@implementation BKPDFReaderView
+@implementation BKPDFPageView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -41,6 +41,11 @@
 - (void)showPdfDocument:(BKPDFDocument*)document
 {
     self.pdfDocument = document;
+    
+    CGRect frame = self.frame;
+    frame.size = [self.pdfDocument rectForPage].size;
+    //self.frame = frame;
+    
     [self setNeedsDisplay];
 }
 
@@ -64,7 +69,5 @@
     CGContextScaleCTM(context, 1, -1);
     CGContextTranslateCTM(context, 0, -rect.size.height);
 }
-
-
 
 @end

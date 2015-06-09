@@ -8,9 +8,12 @@
 
 #import "BKPDFScrollReader.h"
 #import <PureLayout.h>
+#import "BKPDFPageView.h"
+
 @interface BKPDFScrollReader ()
 
 @property (nonatomic, strong) UIScrollView* contentScroll;
+@property (nonatomic, strong) BKPDFPageView* readerView;
 
 @end
 
@@ -18,8 +21,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    if(self = [self initWithFrame:frame]) {
+    if(self = [super initWithFrame:frame]) {
         [self setupScrollWithFrame:frame];
+        [self setupReaderWithFrame:frame];
     }
     return self;
 }
@@ -32,6 +36,21 @@
 - (void)pinScrollToSuperView
 {
     [self.contentScroll autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+- (void)setupReaderWithFrame:(CGRect)frame
+{
+    self.readerView = [[BKPDFPageView alloc] initWithFrame:self.bounds];
+    [self.contentScroll addSubview:self.readerView];
+}
+- (void)pinReaderToScrollView
+{
+    [self.readerView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+}
+
+- (void)showPdfDocument:(BKPDFDocument*)document
+{
+    [self.readerView showPdfDocument:document];
+    [self pinReaderToScrollView];
 }
 
 @end

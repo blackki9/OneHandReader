@@ -15,5 +15,6 @@
 
 - (instancetype)initWithFileURL:(NSURL*)fileURL;
 - (CGPDFPageRef)pageWithNumber:(NSInteger)pageNumber;
+- (CGRect)rectForPage;
 
 @end

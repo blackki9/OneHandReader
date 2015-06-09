@@ -10,7 +10,7 @@
 
 @class BKPDFDocument;
 
-@interface BKPDFReaderView : UIView
+@interface BKPDFPageView : UIView
 
 - (void)showPdfDocument:(BKPDFDocument*)document;
 

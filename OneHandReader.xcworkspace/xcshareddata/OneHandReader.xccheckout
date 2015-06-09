@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B1A4A180-1A24-4FD3-BC52-B5CB69ACDC4C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OneHandReader</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C720DB4716495DA3F8E0EF573EEF9B9E1AF2C90F</key>
+		<string>https://github.com/blackki9/OneHandReader.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>OneHandReader.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C720DB4716495DA3F8E0EF573EEF9B9E1AF2C90F</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/blackki9/OneHandReader.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C720DB4716495DA3F8E0EF573EEF9B9E1AF2C90F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C720DB4716495DA3F8E0EF573EEF9B9E1AF2C90F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OneHandReader</string>
+		</dict>
+	</array>
+</dict>
+</plist>
