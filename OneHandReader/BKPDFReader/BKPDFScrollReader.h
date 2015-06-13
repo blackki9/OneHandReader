@@ -13,5 +13,11 @@
 @interface BKPDFScrollReader : UIView
 
 - (void)showPdfDocument:(BKPDFDocument*)document;
+- (void)scaleDocumentWithScale:(CGFloat)scale;
+
+- (void)moveToPage:(NSInteger)page;
+- (void)moveToNextPage;
+- (void)moveToPreviousPage;
+
 
 @end

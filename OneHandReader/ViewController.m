@@ -13,22 +13,23 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) BKPDFScrollReader* readerView;
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BKPDFScrollReader* readerView = [[BKPDFScrollReader alloc] initWithFrame:self.view.bounds];
+    self.readerView = [[BKPDFScrollReader alloc] initWithFrame:self.view.bounds];
     
-    BKPDFDocument* document = [[BKPDFDocument alloc] initWithFileURL:[[NSBundle mainBundle] URLForResource:@"help" withExtension:@"pdf"]];
+    BKPDFDocument* document = [[BKPDFDocument alloc] initWithFileURL:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf"]];
 
-    [self.view addSubview:readerView];
+    [self.view addSubview:_readerView];
+        
+    [_readerView showPdfDocument:document];
     
-    [readerView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, 0,0)];
-    
-    [readerView showPdfDocument:document];
-    // Do any additional setup after loading the view, typically from a nib.
+    [_readerView moveToPage:15];
 }
 
 - (void)didReceiveMemoryWarning {

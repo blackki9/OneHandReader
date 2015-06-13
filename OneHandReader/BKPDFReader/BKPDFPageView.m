@@ -8,44 +8,80 @@
 
 #import "BKPDFPageView.h"
 #import "BKPDFDocument.h"
+#import <PureLayout.h>
+
 @interface BKPDFPageView ()
 
 @property (nonatomic, strong) BKPDFDocument* pdfDocument;
 @property (nonatomic,assign) NSInteger currentPage;
+
 @end
 
-@implementation BKPDFPageView
+@implementation BKPDFPageView{
+    CGFloat currentScale;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if(self = [super initWithFrame:frame]) {
-        _currentPage = 1;
-        [self setupGestureRecognizers];
+        [self p_moveToFirstPage];
+        self.contentMode = UIViewContentModeRedraw;
     }
     
     return self;
 }
-- (void)setupGestureRecognizers
-{
-    UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
-    tapRecognizer.numberOfTapsRequired = 2;
-    
-    [self addGestureRecognizer:tapRecognizer];
-}
-- (void)doubleTap:(UITapGestureRecognizer*)recognizer
-{
-    self.currentPage++;
-    [self setNeedsDisplay];
+- (void)p_moveToFirstPage {
+    [self moveToPage:1];
 }
 
+#pragma mark - page movement
+- (void)moveToNextPage
+{
+    [self moveToPage:self.currentPage + 1];
+}
+- (void)moveToPreviousPage
+{
+    [self moveToPage:self.currentPage - 1];
+}
+- (void)moveToPage:(NSInteger)page
+{
+    if([self p_isPageInBoundsOfDocument:page]) {
+        self.currentPage = page;
+        [self setNeedsDisplay];
+    }
+}
+- (BOOL)p_isPageInBoundsOfDocument:(NSInteger)page
+{
+    if(page < 1 || page > self.pdfDocument.pagesAmount) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+#pragma mark - public methods
 - (void)showPdfDocument:(BKPDFDocument*)document
 {
     self.pdfDocument = document;
     
     CGRect frame = self.frame;
-    frame.size = [self.pdfDocument rectForPage].size;
-    //self.frame = frame;
+    CGSize pdfDocumentSize = [self.pdfDocument rectForPage].size;
+    CGFloat aspectRatio = frame.size.width / pdfDocumentSize.width;
     
+    [self scaleDocumentWithScale:aspectRatio];
+}
+
+- (void)scaleDocumentWithScale:(CGFloat)scale
+{
+    currentScale = scale;
+
+    CGSize pdfDocumentSize = [self.pdfDocument rectForPage].size;
+    CGSize newSize = CGSizeMake(pdfDocumentSize.width * scale, pdfDocumentSize.height * scale);
+    
+    self.frame = CGRectMake(0, 0, newSize.width, newSize.height);
+    
+    [self removeConstraints:self.constraints];
+    [self autoSetDimensionsToSize:newSize];
     [self setNeedsDisplay];
 }
 
@@ -53,17 +89,16 @@
 {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    // PDF might be transparent, assume white paper
-    [[UIColor blueColor] set];
+    [[UIColor whiteColor] set];
     CGContextFillRect(ctx, rect);
     
-    [self flipContext:ctx rect:rect];
-    // url is a file URL
+    [self p_flipContext:ctx rect:rect];
     CGPDFPageRef page1 = [self.pdfDocument pageWithNumber:self.currentPage];
-
+    CGContextScaleCTM(ctx, currentScale, currentScale);
+    
     CGContextDrawPDFPage(ctx, page1);
 }
-- (void)flipContext:(CGContextRef)context rect:(CGRect)rect
+- (void)p_flipContext:(CGContextRef)context rect:(CGRect)rect
 {
     CGContextGetCTM(context);
     CGContextScaleCTM(context, 1, -1);

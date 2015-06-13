@@ -41,7 +41,7 @@
 
 - (CGRect)rectForPage
 {
-    return CGPDFPageGetBoxRect([self pageWithNumber:1], kCGPDFCropBox);
+    return CGPDFPageGetBoxRect([self pageWithNumber:1], kCGPDFMediaBox);
 }
 
 - (void)dealloc

@@ -20,6 +20,7 @@
 		FD9D93381B233A060061AC87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD9D93371B233A060061AC87 /* Images.xcassets */; };
 		FD9D933B1B233A060061AC87 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9D93391B233A060061AC87 /* LaunchScreen.xib */; };
 		FD9D93471B233A060061AC87 /* OneHandReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9D93461B233A060061AC87 /* OneHandReaderTests.m */; };
+		FDE3CD5F1B2C73160094EF64 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FDE3CD5E1B2C73160094EF64 /* test.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FD9D93401B233A060061AC87 /* OneHandReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneHandReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD9D93451B233A060061AC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD9D93461B233A060061AC87 /* OneHandReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneHandReaderTests.m; sourceTree = "<group>"; };
+		FDE3CD5E1B2C73160094EF64 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 		FD277D5A1B2477CD006D8493 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FDE3CD5E1B2C73160094EF64 /* test.pdf */,
 				FD277D5D1B2478B4006D8493 /* help.pdf */,
 			);
 			path = Resources;
@@ -267,6 +270,7 @@
 				FD277D5E1B2478B4006D8493 /* help.pdf in Resources */,
 				FD9D933B1B233A060061AC87 /* LaunchScreen.xib in Resources */,
 				FD9D93381B233A060061AC87 /* Images.xcassets in Resources */,
+				FDE3CD5F1B2C73160094EF64 /* test.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +453,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "07f68a1b-6bcd-4cf3-82c8-332fa0b8949a";
 			};
 			name = Debug;
 		};
@@ -461,6 +466,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "07f68a1b-6bcd-4cf3-82c8-332fa0b8949a";
 			};
 			name = Release;
 		};
